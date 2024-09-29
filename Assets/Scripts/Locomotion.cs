@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Locomotion : MonoBehaviour
+public class Locomotion : MonoBehaviour, IDataPersistence
 {
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -17,6 +17,14 @@ public class Locomotion : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPosition;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.playerPosition = this.transform.position;
+    }
     // Update is called once per frame
     private void FixedUpdate()
     {

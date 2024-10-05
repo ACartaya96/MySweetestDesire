@@ -7,12 +7,13 @@ using UnityEngine;
 public class GameData 
 {
     public Vector3 playerPosition;
-    
+    public PolygonCollider2D boundingBox;
 
     public GameData()
     {
         //Default Constructor
         playerPosition = Vector3.zero;
+        boundingBox = null;
         
     }
 }

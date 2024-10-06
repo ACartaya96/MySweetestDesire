@@ -8,6 +8,9 @@ public class MapTransition : MonoBehaviour
     [SerializeField] PolygonCollider2D mapBoundry;
     CinemachineConfiner confiner;
     CameraManagment cameraManager;
+
+    
+    [SerializeField] GameObject waypointPath;    
     [SerializeField] Direction direction;
     [SerializeField] private float additivePos;
     enum Direction { Up, Down, Left, Right };
@@ -30,7 +33,7 @@ public class MapTransition : MonoBehaviour
 
     private void UpdatePlayerPosition(GameObject player)
     {
-        Vector3 newPosition = player.transform.position;
+        Vector3 newPosition = waypointPath.transform.position;
 
         switch (direction)
         {
@@ -50,6 +53,6 @@ public class MapTransition : MonoBehaviour
                 break;
         }
 
-        player.transform.position = newPosition;
+        player.transform.position =  newPosition;
     }
 }

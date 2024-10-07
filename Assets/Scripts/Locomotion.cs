@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Locomotion : MonoBehaviour, IDataPersistence
 {
@@ -28,13 +27,14 @@ public class Locomotion : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (movement != null)
-            rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+        if(DialogueManager.Instance.dialogueIsPlaying)
+        {
+            return;
+        }
+        // Update the movement of the character
+        rb.MovePosition(rb.position + InputManager.Instance.GetMovePosition() * speed * Time.deltaTime);
     }
 
-    public void Move(InputAction.CallbackContext context)
-    {
-        movement = context.ReadValue<Vector2>().normalized;
-    }
+ 
     
 }

@@ -16,7 +16,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance != null)
         {
             Debug.LogError("Found more than one Data Persistence Manage in the Scene");
         }
